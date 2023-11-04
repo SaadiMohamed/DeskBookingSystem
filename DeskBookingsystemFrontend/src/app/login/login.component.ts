@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../Services/login.service';
 import { Router } from '@angular/router';
+import { TokenService } from '../Services/token.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent {
   InvalidAuth : boolean = false
   errorMessage : string = ""
 
-  constructor(private loginService: LoginService, private router: Router){
+  constructor(private loginService: LoginService, private router: Router, private token : TokenService){
 
   }
 
@@ -37,6 +38,7 @@ export class LoginComponent {
         next: (response) => {
           // Handle a successful login
           console.log('Login successful', response)
+          this.token.saveToken(response.token)
           this.router.navigate(['/home'])
 
 
