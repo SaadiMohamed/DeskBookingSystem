@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../Services/login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent {
   InvalidAuth : boolean = false
   errorMessage : string = ""
 
-  constructor(private loginService: LoginService){
+  constructor(private loginService: LoginService, private router: Router){
 
   }
 
@@ -35,7 +36,9 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           // Handle a successful login
-          console.log('Login successful', response);
+          console.log('Login successful', response)
+          this.router.navigate(['/home'])
+
 
           // Redirect to another component or perform other actions
         },
