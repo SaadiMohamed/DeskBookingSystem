@@ -47,6 +47,7 @@ namespace drivers.api.Controllers
                 {
                     var token = GenerateJwtToken(existingUser);
 
+
                     return Ok(new LoginRequestResponse()
                     {
                         Token = token,

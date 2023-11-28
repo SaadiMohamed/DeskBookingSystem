@@ -19,6 +19,10 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router, private token : TokenService){
 
   }
+  ngOnInit(){
+    this.token.removeToken()
+    console.log("Werkt da fni")
+  }
 
   resetErrorMessage(){
     this.errorMessage == ""
